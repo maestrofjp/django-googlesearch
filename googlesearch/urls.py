@@ -1,4 +1,6 @@
 import django
+from django.views.generic.base import TemplateView
+
 version = django.get_version()
 
 if version < 1.6:
@@ -10,9 +12,8 @@ urlpatterns = patterns(
     '',
 
     url(
-        r'^results/$', 
-        'django.views.generic.simple.direct_to_template', 
-        {'template': 'googlesearch/results.html'},
+        r'^results/$',
+        TemplateView.as_view(template_name='googlesearch/results.html')
         name='googlesearch-results'
     ),
 
